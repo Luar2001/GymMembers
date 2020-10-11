@@ -24,6 +24,9 @@ public class Split3WayTest {
     @Test
     public void SplitListContainingAPersonTest() {
         //split into smaller lists of 4
+
+        //check if multidim exceeds index of 4
+        //checks if multidim has more then 1 index
     }
 
     @Test
