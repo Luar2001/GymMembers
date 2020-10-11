@@ -124,7 +124,7 @@ public class Search {
         //write to the file called Arrival.txt
         try (FileWriter fw = new FileWriter("files/Arrival.txt", true)) {
 
-            BufferedWriter bw = new BufferedWriter(fw);
+            new BufferedWriter(fw);
             fw.write(customerMessage + " " + LocalDate.now());
 
         }
