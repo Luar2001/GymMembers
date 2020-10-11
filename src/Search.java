@@ -122,10 +122,10 @@ public class Search {
                 customer[arrayIndex][2] + " " + customer[arrayIndex][3];
 
         //write to the file called Arrival.txt
-        try (BufferedWriter out = new BufferedWriter(new FileWriter("files/Arrival.txt"))) {
+        try (FileWriter fw = new FileWriter("files/Arrival.txt", true)) {
 
-            out.write(customerMessage + " " + LocalDate.now());
-            out.newLine();
+            BufferedWriter bw = new BufferedWriter(fw);
+            fw.write(customerMessage + " " + LocalDate.now());
 
         }
         //print out that the user arrived and all the data in the multi array
