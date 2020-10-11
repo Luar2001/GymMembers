@@ -8,6 +8,8 @@ public class Main {
 
         Split3Way split = new Split3Way(readFile.getCustomers());
 
+        Search search = new Search(split.customer);
+
 
     }
 }

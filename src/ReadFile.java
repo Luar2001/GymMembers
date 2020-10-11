@@ -50,6 +50,8 @@ public class ReadFile {
     public void Read(Scanner scan) {
 
         while (scan.hasNext()) {
+
+            // TODO: 11/10/2020 remove , form the string before adding it to the arraylist
             AddToList(scan);
         }
 

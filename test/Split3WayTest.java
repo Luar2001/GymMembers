@@ -27,15 +27,11 @@ public class Split3WayTest {
 
         //check if multidim exceeds index of 4
         //checks if multidim has more then 1 index
+
+        //Checks if data correct
     }
 
-    @Test
-    public void CheckRegDateTest() {
-        //checks the Registration date of the customer
 
-        assertEquals("2019-07-01", test.customer[0][3]);
-
-    }
 
 }
 
