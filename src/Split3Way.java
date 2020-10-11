@@ -87,6 +87,15 @@ public class Split3Way {
     }
 
     /**
+     * Returns the array that is sorted
+     *
+     * @return Returns a Multidimensional array
+     */
+    public String[][] getCustomer() {
+        return customer;
+    }
+
+    /**
      * Prints the entire Multidimensional array (FOR TESTING)
      */
     public void PrintCustomer(){
@@ -94,19 +103,6 @@ public class Split3Way {
         for (String[] s : customer)
             System.out.println(Arrays.toString(s));
     }
-    
-    public void CheckIdNumber(){
-
-    }
-
-    public void CheckName() {
-
-    }
-
-    public void CheckRegDate(){
-
-    }
-
 
 
 

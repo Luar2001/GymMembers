@@ -30,29 +30,6 @@ public class Split3WayTest {
     }
 
     @Test
-    public void CheckNameTest() {
-        //checks the first and last name of the customer
-
-        //firstName check
-        assertEquals("Alhambra", test.customer[0][1]);
-        //lastNameCheck
-        assertEquals("Belle", test.customer[1][2]);
-
-    }
-
-    @Test
-    public void CheckIdNumberTest() {
-        //checks the IdNumber of the customer
-
-        //checks the first persons id number
-        assertEquals("7603021234,", test.customer[0][0]);
-
-        //checks the third persons id number
-        assertEquals("8512021234,", test.customer[2][0]);
-
-    }
-
-    @Test
     public void CheckRegDateTest() {
         //checks the Registration date of the customer
 
