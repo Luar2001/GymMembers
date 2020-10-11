@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by Lukas Aronsson
@@ -13,7 +12,7 @@ public class Split3Way {
     private int CustomersSize;
 
     protected String[][] customer = new String[14][4];
-    // TODO: 11/10/2020 Change to size of customerSize/4 but i get indexerror same as (14)
+    // TODO: 11/10/2020 Change to size of customerSize/4 but i get index error same as (14)
 
     /**
      * Constructor that calls the setCustomersSize,SplitListContainingAPerson
@@ -27,9 +26,6 @@ public class Split3Way {
 
         //sorts the Arraylist Based on index into the multidimensional array
         SplitListContainingAPerson(customers);
-
-        //prints the entire array (TEST)
-        PrintCustomer();
 
     }
 
@@ -49,16 +45,6 @@ public class Split3Way {
      */
     public void setCustomersSize(ArrayList<String> customers) {
        this.CustomersSize = customers.size();
-    }
-
-    /**
-     * Divides the getCustomers with 4 to be used as array index
-     *
-     * @return Returns the size of CustomersSize/4
-     */
-    public int getCustomersSizeDiv4() {
-
-        return ((getCustomersSize())/4);
     }
 
     /**
@@ -85,25 +71,6 @@ public class Split3Way {
         }
 
     }
-
-    /**
-     * Returns the array that is sorted
-     *
-     * @return Returns a Multidimensional array
-     */
-    public String[][] getCustomer() {
-        return customer;
-    }
-
-    /**
-     * Prints the entire Multidimensional array (FOR TESTING)
-     */
-    public void PrintCustomer(){
-        System.out.println("ARRAY PRINT");
-        for (String[] s : customer)
-            System.out.println(Arrays.toString(s));
-    }
-
 
 
 }

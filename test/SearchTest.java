@@ -33,6 +33,7 @@ public class SearchTest {
 
         //firstName check
         assertEquals("Alhambra", test.customer[0][1]);
+
         //lastNameCheck
         assertEquals("Belle", test.customer[1][2]);
 

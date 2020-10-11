@@ -1,6 +1,8 @@
-import javax.sql.rowset.serial.SerialArray;
 import javax.swing.*;
-import java.awt.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
 
 /**
  * Created by Lukas Aronsson
@@ -8,16 +10,22 @@ import java.awt.*;
  * Time: 17:49
  * Project: Inlämningsuppgift 2
  * Copyright: MIT
+ * <p>
+ * Searches the array for a match and records the matching user in a txt file with all the userdata and current date
  **/
 public class Search {
 
-    private final boolean KeepLooping = true;
     //the index in the array (aka the customer)
     private int arrayIndex;
-    //the multidimensional index aka id or name
-    private int arrayMultIndex;
 
-    public Search(String[][] customer) {
+    /**
+     * Constructor that just calls for userInput
+     *
+     * @param customer Multidimensional array with customer names,idNumbers and registration date
+     *
+     * @throws IOException // TODO: 11/10/2020 fix exception
+     */
+    public Search(String[][] customer) throws IOException {
 
         //Calls the user input
         userInput(customer);
@@ -25,28 +33,22 @@ public class Search {
 
     }
 
-    public int getArrayIndex() {
-        // TODO: 11/10/2020 use for when customer is there to get the multiarray and print that to joPtion pain then to file
-
-        return arrayIndex;
-    }
-
+    /**
+     * Sets the arrayIndex to the index of the current customer
+     *
+     * @param arrayIndex the index in the array that corresponds to a matching name or IdNumber
+     */
     public void setArrayIndex(int arrayIndex) {
         this.arrayIndex = arrayIndex;
     }
 
-    public int getArrayMultIndex() {
-        return arrayMultIndex;
-    }
-
-    public void setArrayMultIndex(int arrayMultIndex) {
-        this.arrayMultIndex = arrayMultIndex;
-    }
-
     /**
-     * Asks for user input checks it and then returns it as a string
+     * Asks for userInput and checks if it matches any names or IdNumbers in the array
+     *
+     * @param customer Multidimensional array with customer names,idNumbers and registration date
+     * @throws IOException // TODO: 11/10/2020 fix exception
      */
-    public void userInput(String[][] customer) {
+    public void userInput(String[][] customer) throws IOException {
 
 
         String input = JOptionPane.showInputDialog("Input First, Lastname or ID Number of customer");
@@ -63,11 +65,7 @@ public class Search {
 
                 setArrayIndex(i);
 
-                setArrayMultIndex(g);
-
-                System.out.println("TEST: \n" + customer[i][0] + "\n" +customer[i][1] + "\n"+ customer[i][2] + "\n" + customer[i][3]);
-
-                CheckRegDate(customer[arrayIndex][3]);
+                CheckRegDate(customer);
 
                 break; //hopefully breaks the for loop
 
@@ -82,10 +80,57 @@ public class Search {
 
     }
 
-    public void CheckRegDate(String Date) {
+    /**
+     * Checks that the current users registration date was less then a year ago
+     *
+     * @param customer Multidimensional array with customer names,idNumbers and registration date
+     * @throws IOException // TODO: 11/10/2020 fix exception
+     */
+    public void CheckRegDate(String[][] customer) throws IOException {
 
         //here we check the date for if its inside the right parameters
-        System.out.println("it got to here");
+
+        LocalDate today = LocalDate.now();
+
+        //turn registrationDate string into a date
+        LocalDate regDate = LocalDate.parse(customer[arrayIndex][3]);
+
+        //diff between 2 dates
+        if (today.getYear() - regDate.getYear() < 1) {
+
+            //Was registered less then a year ago :)
+            RecordArrival(customer);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "ERROR: Registered more then a year ago. ");
+        }
+
+
+    }
+
+    /**
+     * Writes to file the all the info about the current customer and the current date and prints the userdata to a
+     * message box
+     *
+     * @param customer Multidimensional array with customer names,idNumbers and registration date
+     * @throws IOException // TODO: 11/10/2020 fix exception
+     */
+    public void RecordArrival(String[][] customer) throws IOException {
+
+        //so i don't have to print it 2 times
+        String customerMessage = customer[arrayIndex][0] + " " + customer[arrayIndex][1] + " " +
+                customer[arrayIndex][2] + " " + customer[arrayIndex][3];
+
+        //write to the file called Arrival.txt
+        try (BufferedWriter out = new BufferedWriter(new FileWriter("files/Arrival.txt"))) {
+
+            out.write(customerMessage + " " + LocalDate.now());
+            out.newLine();
+
+        }
+        //print out that the user arrived and all the data in the multi array
+        JOptionPane.showMessageDialog(null, customerMessage);
+
 
     }
 

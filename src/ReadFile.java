@@ -55,8 +55,6 @@ public class ReadFile {
             AddToList(scan);
         }
 
-        PrintList();
-
     }
 
     /**
@@ -70,13 +68,6 @@ public class ReadFile {
 
     }
 
-    /**
-     * Prints the list called customers one index at a time (FOR TESTING ONLY)
-     */
-    public void PrintList() {
-        for (String s : customers)
-            System.out.println(s);
-    }
 
 
 }
