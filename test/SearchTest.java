@@ -66,7 +66,7 @@ public class SearchTest {
         try (FileWriter fw = new FileWriter("test/TestTXTArrivals.txt", true)) {
 
             new BufferedWriter(fw);
-            fw.write(customerMessage + " " + LocalDate.now());
+            fw.write(customerMessage + " " + LocalDate.now() + "\n");
 
         }
 

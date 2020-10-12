@@ -125,7 +125,8 @@ public class Search {
         try (FileWriter fw = new FileWriter("files/Arrival.txt", true)) {
 
             new BufferedWriter(fw);
-            fw.write(customerMessage + " " + LocalDate.now());
+            fw.write(customerMessage + " " + LocalDate.now() + "\n");
+
 
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "ERROR: interrupted I/O operations! ");
