@@ -22,14 +22,17 @@ public class Search {
      * Constructor that just calls for userInput
      *
      * @param customer Multidimensional array with customer names,idNumbers and registration date
-     *
-     * @throws IOException // TODO: 11/10/2020 fix exception
      */
-    public Search(String[][] customer) throws IOException {
+    public Search(String[][] customer) {
 
-        //Calls the user input
-        userInput(customer);
 
+        try {
+            //Calls the user input
+            userInput(customer);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR: Could not ask for user input! ");
+        }
 
     }
 
@@ -46,9 +49,8 @@ public class Search {
      * Asks for userInput and checks if it matches any names or IdNumbers in the array
      *
      * @param customer Multidimensional array with customer names,idNumbers and registration date
-     * @throws IOException // TODO: 11/10/2020 fix exception
      */
-    public void userInput(String[][] customer) throws IOException {
+    public void userInput(String[][] customer) {
 
 
         String input = JOptionPane.showInputDialog("Input First, Lastname or ID Number of customer");
@@ -71,7 +73,7 @@ public class Search {
 
             } else if (i == customer.length - 1) {
 
-                JOptionPane.showMessageDialog(null, "ERROR: That Customer douse not exist, Please try again. ");
+                JOptionPane.showMessageDialog(null, "ERROR: That Customer douse not exist! ");
 
             }
 
@@ -84,9 +86,8 @@ public class Search {
      * Checks that the current users registration date was less then a year ago
      *
      * @param customer Multidimensional array with customer names,idNumbers and registration date
-     * @throws IOException // TODO: 11/10/2020 fix exception
      */
-    public void CheckRegDate(String[][] customer) throws IOException {
+    public void CheckRegDate(String[][] customer) {
 
         //here we check the date for if its inside the right parameters
 
@@ -113,9 +114,8 @@ public class Search {
      * message box
      *
      * @param customer Multidimensional array with customer names,idNumbers and registration date
-     * @throws IOException // TODO: 11/10/2020 fix exception
      */
-    public void RecordArrival(String[][] customer) throws IOException {
+    public void RecordArrival(String[][] customer) {
 
         //so i don't have to print it 2 times
         String customerMessage = customer[arrayIndex][0] + " " + customer[arrayIndex][1] + " " +
@@ -127,6 +127,8 @@ public class Search {
             new BufferedWriter(fw);
             fw.write(customerMessage + " " + LocalDate.now());
 
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: interrupted I/O operations! ");
         }
         //print out that the user arrived and all the data in the multi array
         JOptionPane.showMessageDialog(null, customerMessage);

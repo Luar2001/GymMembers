@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -18,10 +19,8 @@ public class ReadFile {
 
     /**
      * The constructor that checks if file was read and calls the Read method
-     *
-     * @throws FileNotFoundException if the file that the scanner reads is not found
      */
-    public ReadFile() throws FileNotFoundException {
+    public ReadFile() {
 
         //the name and path of the file with customers
         String fileName = "files/customers.txt";
@@ -29,6 +28,8 @@ public class ReadFile {
         //try with resources so that the scanner closes
         try (Scanner scan = new Scanner(new File(fileName))) {
             Read(scan);
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: File could not be read! ");
         }
 
     }
@@ -51,7 +52,6 @@ public class ReadFile {
 
         while (scan.hasNext()) {
 
-            // TODO: 11/10/2020 remove , form the string before adding it to the arraylist
             AddToList(scan);
         }
 
@@ -59,15 +59,23 @@ public class ReadFile {
 
     /**
      * Adds the strings form Read one word at a time to a list called customers
+     * Also removes , if the string contains it
      *
      * @param scan a Scanner that reads form the file with customer names
      */
     public void AddToList(Scanner scan) {
 
-        this.customers.add(scan.next());
+        String var = scan.next();
+
+        //removes the , from the IdNumbers
+        if (var.contains(",")) {
+            this.customers.add(var.replace(",", ""));
+        } else {
+            this.customers.add(var);
+        }
+
 
     }
-
 
 
 }

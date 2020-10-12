@@ -1,9 +1,5 @@
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * Created by Lukas Aronsson
  * Date: 11/10/2020
@@ -16,9 +12,6 @@ public class Split3WayTest {
     ReadFile testList = new ReadFile();
 
     Split3Way test = new Split3Way(testList.getCustomers());
-
-    public Split3WayTest() throws FileNotFoundException {
-    }
 
 
     @Test

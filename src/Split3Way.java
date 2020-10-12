@@ -6,6 +6,8 @@ import java.util.ArrayList;
  * Time: 15:18
  * Project: Inlämningsuppgift 2
  * Copyright: MIT
+ * <p>
+ * Splits a ArrayList into a multidimensional array
  **/
 public class Split3Way {
 

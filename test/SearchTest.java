@@ -1,7 +1,5 @@
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -17,19 +15,16 @@ public class SearchTest {
 
     Split3Way test = new Split3Way(testList.getCustomers());
 
-    public SearchTest() throws FileNotFoundException {
-    }
-
 
     @Test
     public void userInputTest() {
         //test if user input is not null or something
 
         //checks the first persons id number
-        assertEquals("7603021234,", test.customer[0][0]);
+        assertEquals("7603021234", test.customer[0][0]);
 
         //checks the third persons id number
-        assertEquals("8512021234,", test.customer[2][0]);
+        assertEquals("8512021234", test.customer[2][0]);
 
         //firstName check
         assertEquals("Alhambra", test.customer[0][1]);
@@ -41,7 +36,10 @@ public class SearchTest {
 
     @Test
     public void CheckRegDateTest() {
-        //checks the Registration date of the customer
+
+        // TODO: 12/10/2020 checks the Registration date of the customer
+
+        // TODO: make temp dates that are more and less then a year a go from LocalDate.now
 
         assertEquals("2019-07-01", test.customer[0][3]);
 
