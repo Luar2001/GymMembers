@@ -20,13 +20,13 @@ public class ReadFile {
     /**
      * The constructor that checks if file was read and calls the Read method
      */
-    public ReadFile() {
+    public ReadFile(String path) {
 
         //the name and path of the file with customers
-        String fileName = "files/customers.txt";
+
 
         //try with resources so that the scanner closes
-        try (Scanner scan = new Scanner(new File(fileName))) {
+        try (Scanner scan = new Scanner(new File(path))) {
             Read(scan);
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "ERROR: File could not be read! ");

@@ -1,6 +1,11 @@
 import org.junit.jupiter.api.Test;
 
+import java.io.*;
+import java.time.LocalDate;
+import java.util.Scanner;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 /**
  * Created by Lukas Aronsson
@@ -11,9 +16,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  **/
 public class SearchTest {
 
-    ReadFile testList = new ReadFile();
+    ReadFile testList = new ReadFile("test/TestTXTFile.txt");
 
     Split3Way test = new Split3Way(testList.getCustomers());
+
+    String customerMessage = test.customer[0][0] + " " + test.customer[0][1] + " " +
+            test.customer[0][2] + " " + test.customer[0][3];
 
 
     @Test
@@ -37,14 +45,46 @@ public class SearchTest {
     @Test
     public void CheckRegDateTest() {
 
-        // TODO: 12/10/2020 checks the Registration date of the customer
-
-        // TODO: make temp dates that are more and less then a year a go from LocalDate.now
-
+        //check that the registration dates can be read from file
         assertEquals("2019-07-01", test.customer[0][3]);
+        assertEquals("2020-08-04", test.customer[2][3]);
+
+
+        //Check 1 year apart Thing
+        LocalDate regDate = LocalDate.parse(test.customer[0][3]); //2019-07-01
+
+        assertEquals(1, LocalDate.of(2020, 6, 1).getYear() - regDate.getYear()); //there is less then 1 year apart
+        assertNotEquals(1, LocalDate.of(2022, 7, 2).getYear() - regDate.getYear()); //there is more then 1 year apart
 
     }
 
+    @Test
+    public void RecordArrivalTest() throws IOException {
+
+
+        //file writer
+        try (FileWriter fw = new FileWriter("test/TestTXTArrivals.txt", true)) {
+
+            new BufferedWriter(fw);
+            fw.write(customerMessage + " " + LocalDate.now());
+
+        }
+
+        //file reader
+        try (Scanner scan = new Scanner(new File("test/TestTXTArrivals.txt"))) {
+
+
+            //first read
+            assertEquals("7603021234", scan.next());
+            //second read
+            assertEquals("Alhambra", scan.next());
+            //third read
+            assertNotEquals("7603021234", scan.next());
+
+        }
+
+
+    }
 
 
 }

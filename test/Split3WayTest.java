@@ -1,5 +1,8 @@
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 /**
  * Created by Lukas Aronsson
  * Date: 11/10/2020
@@ -9,19 +12,23 @@ import org.junit.jupiter.api.Test;
  **/
 public class Split3WayTest {
 
-    ReadFile testList = new ReadFile();
+    ReadFile testList = new ReadFile("test/TestTXTFile.txt");
 
     Split3Way test = new Split3Way(testList.getCustomers());
 
 
     @Test
     public void SplitListContainingAPersonTest() {
-        //split into smaller lists of 4
 
-        //check if multidim exceeds index of 4
-        //checks if multidim has more then 1 index
+        //checks if the multidimensional array is 4 indexes deep
+        assertEquals(4, test.customer[0].length);
+        //checks if the multidimensional array is not 5 indexes deep
+        assertNotEquals(5, test.customer[0].length);
 
-        //Checks if data correct
+        //Check data in array for matches
+        assertEquals("7603021234", test.customer[0][0]);
+        assertEquals("Alhambra", test.customer[0][1]);
+        assertNotEquals("Alhambra", test.customer[0][0]);
     }
 
 
