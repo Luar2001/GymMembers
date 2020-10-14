@@ -73,7 +73,7 @@ public class Search {
 
             } else if (i == customer.length - 1) {
 
-                JOptionPane.showMessageDialog(null, "ERROR: That Customer douse not exist! ");
+                JOptionPane.showMessageDialog(null, "Not currently a member \n That Customer does not exist! ");
 
             }
 
@@ -103,7 +103,7 @@ public class Search {
             RecordArrival(customer);
 
         } else {
-            JOptionPane.showMessageDialog(null, "ERROR: Registered more then a year ago. ");
+            JOptionPane.showMessageDialog(null, "Not a member \n Registered more then a year ago. ");
         }
 
 
@@ -132,7 +132,7 @@ public class Search {
             JOptionPane.showMessageDialog(null, "ERROR: interrupted I/O operations! ");
         }
         //print out that the user arrived and all the data in the multi array
-        JOptionPane.showMessageDialog(null, customerMessage);
+        JOptionPane.showMessageDialog(null, "Guest is currently a member \n" + customerMessage);
 
 
     }
