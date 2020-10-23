@@ -13,7 +13,7 @@ public class Split3Way {
 
     private int CustomersSize;
 
-    protected String[][] customer = new String[14][4];
+    protected String[][] customer = new String[15][4];
     // TODO: 11/10/2020 Change to size of customerSize/4 but i get index error same as (14)
 
     /**

@@ -32,7 +32,7 @@ public class SearchTest {
         assertEquals("7603021234", test.customer[0][0]);
 
         //checks the third persons id number
-        assertEquals("8512021234", test.customer[2][0]);
+        assertEquals("7805211234", test.customer[2][0]);
 
         //firstName check
         assertEquals("Alhambra", test.customer[0][1]);
